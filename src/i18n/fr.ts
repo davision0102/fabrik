@@ -26,7 +26,7 @@ export const fr = {
     titleStart: 'Un vrai site React,',
     titleAccent: 'même sans être développeur.',
     description:
-      'Fabrik te donne une base déjà prête : la mise en page, les composants, le mode sombre et la mise en ligne sont réglés. Tu décris ce que tu veux à ton assistant IA, il écrit le code en respectant le projet.',
+      'Fabrik te donne une base déjà prête\u00a0: la mise en page, les composants, le mode sombre et la mise en ligne sont réglés. Tu décris ce que tu veux à ton assistant IA, il écrit le code en respectant le projet.',
     useTemplate: 'Utiliser ce template',
     viewOnGithub: 'Voir sur GitHub',
     projectName: 'mon-projet',
@@ -39,15 +39,15 @@ export const fr = {
     features: {
       eyebrow: 'Ce qui est déjà prêt',
       title: 'Tout ce qui fait peur au début est déjà réglé.',
-      text: 'Pas besoin de savoir configurer un projet. Tu commences directement par la partie que tu préfères : le design.',
+      text: 'Pas besoin de savoir configurer un projet. Tu commences directement par la partie que tu préfères\u00a0: le design.',
       items: [
         {
           title: 'Tu décris, l’IA code',
-          text: 'Demande ce que tu veux à Claude, Cursor ou Codex en français. Le projet contient un mode d’emploi pour eux : ils ajoutent tes pages proprement au lieu de tout casser.',
+          text: 'Demande ce que tu veux à Claude, Cursor ou Codex en français. Le projet contient un mode d’emploi pour eux\u00a0: ils ajoutent tes pages proprement au lieu de tout casser.',
         },
         {
           title: 'Une bibliothèque de composants',
-          text: 'Boutons, champs, fenêtres, cartes : comme une librairie Figma, mais en vrai. Tu les vois tous sur la page Composants et tu les personnalises à ton goût.',
+          text: 'Boutons, champs, fenêtres, cartes\u00a0: comme une librairie Figma, mais en vrai. Tu les vois tous sur la page Composants et tu les personnalises à ton goût.',
         },
         {
           title: 'Ton design system en variables',
@@ -73,7 +73,7 @@ export const fr = {
       items: [
         {
           title: 'Récupère le template',
-          text: 'Sur GitHub, clique sur « Utiliser ce template ». C’est gratuit, il te faut juste un compte.',
+          text: 'Sur GitHub, clique sur «\u00a0Utiliser ce template\u00a0». C’est gratuit, il te faut juste un compte.',
         },
         {
           title: 'Ouvre-le avec ton assistant IA',
@@ -81,12 +81,12 @@ export const fr = {
         },
         {
           title: 'Décris ton site',
-          text: '« Ajoute une page portfolio avec mes projets en grille. » L’assistant s’en charge, tu ajustes le rendu.',
+          text: '«\u00a0Ajoute une page portfolio avec mes projets en grille.\u00a0» L’assistant s’en charge, tu ajustes le rendu.',
         },
       ],
     },
     cta: {
-      title: 'Prêt à commencer ?',
+      title: 'Prêt à commencer\u00a0?',
       text: 'C’est gratuit et open source. Pour ton portfolio, un prototype à montrer ou le site d’un client.',
       components: 'Voir les composants',
     },
@@ -95,7 +95,7 @@ export const fr = {
     eyebrow: 'Composants',
     title: 'La boîte à outils',
     intro:
-      'Tous les composants disponibles, en clair et en sombre. Pour en ajouter un, demande-le simplement à ton assistant IA (« ajoute un composant Tabs ») ou lance',
+      'Tous les composants disponibles, en clair et en sombre. Pour en ajouter un, demande-le simplement à ton assistant IA («\u00a0ajoute un composant Tabs\u00a0») ou lance',
     command: 'npx shadcn@latest add <nom>',
     buttons: {
       default: 'Par défaut',
