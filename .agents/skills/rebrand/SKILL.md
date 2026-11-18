@@ -9,7 +9,8 @@ Quand le template sert de base à un nouveau projet, voici tout ce qui porte l'i
 
 ## Fichiers à modifier
 
-1. **`src/config/site.ts`** — `name`, `tagline`, `description`, `repo` (`utilisateur/depot` sur GitHub), `demoUrl`. Tout le site lit ces valeurs.
+1. **`src/config/site.ts`** — `name`, `repo` (`utilisateur/depot` sur GitHub), `demoUrl`. Tout le site lit ces valeurs.
+   Les textes (accroche, description, sections) sont dans **`src/i18n/fr.ts`** et **`src/i18n/en.ts`** : modifier les deux. Si le projet n'a besoin que d'une langue, retirer `LanguageSwitch` de `src/routes/__root.tsx`.
 2. **`package.json`** — le champ `name` (minuscules, tirets).
 3. **`index.html`** — `<title>`, `<meta name="description">`, `theme-color` et les balises `og:*` (titre, description, URL de la démo).
 4. **`public/og-image.png`** — l'aperçu affiché lors d'un partage (1200 × 630). Sa source est `docs/og-image.html` : y changer le nom et les textes, puis faire une capture de 1200 × 630 (par exemple Chrome headless : `--window-size=1200,630 --screenshot=public/og-image.png`).

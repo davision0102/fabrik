@@ -21,6 +21,7 @@ import {
 } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { useI18n } from '@/i18n/context'
 
 export const Route = createFileRoute('/ui')({
   component: UiPage,
@@ -31,68 +32,64 @@ export const Route = createFileRoute('/ui')({
  * ajoute ici chaque nouveau composant shadcn pour le voir en clair et en sombre.
  */
 function UiPage() {
+  const { t } = useI18n()
+  const u = t.ui
+
   return (
     <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-      <p className="text-sm font-medium text-brand">Composants</p>
+      <p className="text-sm font-medium text-brand">{u.eyebrow}</p>
       <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
-        La boîte à outils
+        {u.title}
       </h1>
       <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
-        Tous les composants disponibles, en clair et en sombre. Pour en ajouter
-        un, demande-le simplement à ton assistant IA (« ajoute un composant Tabs
-        ») ou lance{' '}
-        <code className="font-mono text-foreground">
-          npx shadcn@latest add &lt;nom&gt;
-        </code>
+        {u.intro} <code className="font-mono text-foreground">{u.command}</code>
         .
       </p>
 
       <div className="mt-12 grid gap-6 lg:grid-cols-2">
         <Showcase title="Button">
           <div className="flex flex-wrap gap-3">
-            <Button>Par défaut</Button>
-            <Button variant="secondary">Secondaire</Button>
-            <Button variant="outline">Contour</Button>
-            <Button variant="ghost">Fantôme</Button>
-            <Button variant="destructive">Supprimer</Button>
-            <Button variant="link">Lien</Button>
+            <Button>{u.buttons.default}</Button>
+            <Button variant="secondary">{u.buttons.secondary}</Button>
+            <Button variant="outline">{u.buttons.outline}</Button>
+            <Button variant="ghost">{u.buttons.ghost}</Button>
+            <Button variant="destructive">{u.buttons.destructive}</Button>
+            <Button variant="link">{u.buttons.link}</Button>
           </div>
         </Showcase>
 
         <Showcase title="Badge">
           <div className="flex flex-wrap gap-2">
-            <Badge>Nouveau</Badge>
-            <Badge variant="secondary">Brouillon</Badge>
+            <Badge>{u.badges.new}</Badge>
+            <Badge variant="secondary">{u.badges.draft}</Badge>
             <Badge variant="outline">v1.0</Badge>
-            <Badge variant="destructive">Erreur</Badge>
+            <Badge variant="destructive">{u.badges.error}</Badge>
           </div>
         </Showcase>
 
         <Showcase title="Input & Textarea">
           <div className="grid gap-3">
-            <Input placeholder="ton@email.com" type="email" />
-            <Textarea placeholder="Décris ton idée…" />
+            <Input placeholder={u.fields.email} type="email" />
+            <Textarea placeholder={u.fields.idea} />
           </div>
         </Showcase>
 
         <Showcase title="Dialog">
           <Dialog>
             <DialogTrigger render={<Button variant="outline" />}>
-              Ouvrir la fenêtre
+              {u.dialog.open}
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle>Nouveau projet</DialogTitle>
-                <DialogDescription>
-                  Donne un nom à ton projet pour commencer.
-                </DialogDescription>
+                <DialogTitle>{u.dialog.title}</DialogTitle>
+                <DialogDescription>{u.dialog.description}</DialogDescription>
               </DialogHeader>
-              <Input placeholder="mon-super-projet" />
+              <Input placeholder={u.dialog.placeholder} />
               <DialogFooter>
                 <DialogClose render={<Button variant="ghost" />}>
-                  Annuler
+                  {u.dialog.cancel}
                 </DialogClose>
-                <DialogClose render={<Button />}>Créer</DialogClose>
+                <DialogClose render={<Button />}>{u.dialog.create}</DialogClose>
               </DialogFooter>
             </DialogContent>
           </Dialog>
@@ -100,23 +97,23 @@ function UiPage() {
 
         <Showcase title="Card" className="lg:col-span-2">
           <div className="grid gap-4 sm:grid-cols-3">
-            {['Starter', 'Pro', 'Équipe'].map((plan, i) => (
+            {u.cards.plans.map((plan, i) => (
               <Card key={plan} size="sm">
                 <CardHeader>
                   <CardTitle>{plan}</CardTitle>
-                  <CardDescription>
-                    Exemple de carte de contenu.
-                  </CardDescription>
+                  <CardDescription>{u.cards.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="font-heading text-3xl font-semibold">
-                    {i * 9}€
-                    <span className="text-sm text-muted-foreground">/mois</span>
+                    {u.cards.price(i * 9)}
+                    <span className="text-sm text-muted-foreground">
+                      {u.cards.perMonth}
+                    </span>
                   </p>
                 </CardContent>
                 <CardFooter>
                   <Button size="sm" variant={i === 1 ? 'default' : 'outline'}>
-                    Choisir
+                    {u.cards.choose}
                   </Button>
                 </CardFooter>
               </Card>

@@ -8,7 +8,7 @@ Format ouvert : https://agents.md
 Le public visé comprend des designers et des personnes qui ne codent pas : explique simplement ce que tu fais, sans jargon, et propose de vérifier le rendu dans le navigateur.
 
 Fabrik est un starter React : une base propre pour lancer un site, une app ou un prototype.
-L'identité du projet (nom, textes, liens GitHub) est centralisée dans `src/config/site.ts`.
+Le nom et les liens du projet sont centralisés dans `src/config/site.ts`. Le site est bilingue (français et anglais, sélecteur FR / EN dans l'en-tête) : tous les textes visibles sont dans `src/i18n/fr.ts` et `src/i18n/en.ts`.
 
 ## Stack
 
@@ -35,7 +35,8 @@ Avant de dire qu'une tâche est finie : `npm run lint`, `npm test` et `npm run b
 
 ```
 src/
-  config/site.ts      identité du projet (nom, textes, liens)
+  config/site.ts      identité du projet (nom, liens)
+  i18n/               textes du site : fr.ts (référence), en.ts, sélecteur de langue
   routes/             une page = un fichier (TanStack Router)
   components/         composants de l'app
   components/ui/      composants shadcn — générés, modifiables
@@ -53,7 +54,7 @@ src/
 - **Couleurs** : uniquement les tokens du thème (`bg-background`, `text-muted-foreground`, `text-brand`…), jamais de couleurs Tailwind brutes (`bg-blue-500`) ni d'hexadécimal. Le mode sombre en dépend.
 - **Composants UI** : ajouter avec `npx shadcn@latest add <nom>`, puis l'exposer sur la page `/ui`.
 - **Liens** : `<Link>` de TanStack Router pour la navigation interne, `<a>` pour l'externe.
-- **Textes** : l'interface est en français ; le nom du projet vient de `site.name`, jamais écrit en dur.
+- **Textes** : jamais écrits en dur dans les composants. Ajoute chaque texte dans `src/i18n/fr.ts` **et** `src/i18n/en.ts` (TypeScript signale une traduction manquante), puis lis-le avec `const { t } = useI18n()`. Le nom du projet vient de `site.name`.
 - **Simplicité** : pas de nouvelle dépendance sans raison claire, pas de fichiers inutiles.
 
 ## Skills disponibles

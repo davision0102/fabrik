@@ -40,9 +40,19 @@ Le routing est fait par TanStack Router à partir des fichiers de `src/routes/`.
 
    Le chemin passé à `createFileRoute` doit correspondre au fichier. Le serveur de dev régénère `src/routeTree.gen.ts` tout seul : ne pas l'éditer à la main.
 
-3. **Ajouter le lien** dans la navigation de `src/routes/__root.tsx`, à côté des autres `<Link>`, avec la même classe `navLinkClass`.
+3. **Mettre les textes dans les deux langues** : le site est bilingue. Ajoute une section dans `src/i18n/fr.ts` (par exemple `pricing: { eyebrow, title, intro }`) et la même dans `src/i18n/en.ts`, puis dans la page :
 
-4. **Vérifier** : `npm run build` (les liens vers une route inexistante cassent le build, c'est voulu), puis ouvrir la page en clair et en sombre.
+   ```tsx
+   const { t } = useI18n() // import { useI18n } from '@/i18n/context'
+   // …
+   <h1>{t.pricing.title}</h1>
+   ```
+
+   Le libellé du lien de navigation va dans `nav` des deux fichiers.
+
+4. **Ajouter le lien** dans la navigation de `src/routes/__root.tsx`, à côté des autres `<Link>`, avec la même classe `navLinkClass`.
+
+5. **Vérifier** : `npm run build` (les liens vers une route inexistante cassent le build, c'est voulu), puis ouvrir la page en clair et en sombre, en français et en anglais.
 
 ## À respecter
 

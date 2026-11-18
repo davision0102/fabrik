@@ -12,44 +12,14 @@ import { CopyCommand } from '@/components/copy-command'
 import { GithubIcon } from '@/components/github-icon'
 import { buttonVariants } from '@/components/ui/button'
 import { site } from '@/config/site'
+import { useI18n } from '@/i18n/context'
 import { cn } from '@/lib/utils'
 
 export const Route = createFileRoute('/')({
   component: HomePage,
 })
 
-const features = [
-  {
-    icon: Bot,
-    title: 'Tu décris, l’IA code',
-    text: 'Demande ce que tu veux à Claude, Cursor ou Codex en français. Le projet contient un mode d’emploi pour eux : ils ajoutent tes pages proprement au lieu de tout casser.',
-  },
-  {
-    icon: Layers,
-    title: 'Une bibliothèque de composants',
-    text: 'Boutons, champs, fenêtres, cartes : comme une librairie Figma, mais en vrai. Tu les vois tous sur la page Composants et tu les personnalises à ton goût.',
-  },
-  {
-    icon: Palette,
-    title: 'Ton design system en variables',
-    text: 'Couleurs, polices et arrondis sont réglés dans un seul fichier, comme des variables Figma. Tu changes la couleur principale, tout le site suit.',
-  },
-  {
-    icon: MoonStar,
-    title: 'Mode clair et sombre',
-    text: 'Les deux thèmes marchent dès le départ, sans rien faire. Le site se souvient même du choix de chaque visiteur.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Des garde-fous',
-    text: 'Si quelque chose ne va pas dans le code, le projet te prévient avant que ce soit en ligne. Pas besoin de comprendre comment ça marche pour en profiter.',
-  },
-  {
-    icon: Rocket,
-    title: 'Un lien à partager',
-    text: 'Ton site se publie tout seul et gratuitement sur GitHub Pages. Tu obtiens une vraie adresse à envoyer à un client ou à mettre dans ton portfolio.',
-  },
-]
+const featureIcons = [Bot, Layers, Palette, MoonStar, ShieldCheck, Rocket]
 
 const stack = [
   'React 19',
@@ -59,21 +29,6 @@ const stack = [
   'shadcn/ui',
   'TanStack Router',
   'Vitest',
-]
-
-const steps = [
-  {
-    title: 'Récupère le template',
-    text: 'Sur GitHub, clique sur « Utiliser ce template ». C’est gratuit, il te faut juste un compte.',
-  },
-  {
-    title: 'Ouvre-le avec ton assistant IA',
-    text: 'Dans Claude Code, Cursor ou VS Code. Si c’est ta première fois, le guide du README t’accompagne pas à pas.',
-  },
-  {
-    title: 'Décris ton site',
-    text: '« Ajoute une page portfolio avec mes projets en grille. » L’assistant s’en charge, tu ajustes le rendu.',
-  },
 ]
 
 function HomePage() {
@@ -89,6 +44,8 @@ function HomePage() {
 }
 
 function Hero() {
+  const { t } = useI18n()
+
   return (
     <section className="relative overflow-hidden">
       <div
@@ -104,16 +61,16 @@ function Hero() {
         <div className="min-w-0 animate-in duration-700 fade-in slide-in-from-bottom-3 motion-reduce:animate-none">
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur">
             <span className="size-1.5 rounded-full bg-brand" />
-            {site.tagline}
+            {t.home.tagline}
           </span>
 
           <h1 className="mt-6 text-5xl leading-[1.02] font-semibold tracking-tight sm:text-6xl lg:text-[4rem]">
-            Un vrai site React,{' '}
-            <span className="text-brand">même sans être développeur.</span>
+            {t.home.titleStart}{' '}
+            <span className="text-brand">{t.home.titleAccent}</span>
           </h1>
 
           <p className="mt-6 max-w-xl text-lg text-pretty text-muted-foreground">
-            {site.description}
+            {t.home.description}
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
@@ -123,7 +80,7 @@ function Hero() {
               rel="noreferrer"
               className={cn(buttonVariants({ size: 'lg' }), 'h-11 px-5')}
             >
-              Utiliser ce template
+              {t.home.useTemplate}
               <ArrowRight data-icon="inline-end" />
             </a>
             <a
@@ -136,12 +93,12 @@ function Hero() {
               )}
             >
               <GithubIcon data-icon="inline-start" className="size-4" />
-              Voir sur GitHub
+              {t.home.viewOnGithub}
             </a>
           </div>
 
           <CopyCommand
-            command={`npx degit ${site.repo} mon-projet`}
+            command={`npx degit ${site.repo} ${t.home.projectName}`}
             className="mt-6 max-w-lg"
           />
         </div>
@@ -153,6 +110,8 @@ function Hero() {
 }
 
 function TerminalPreview() {
+  const { t } = useI18n()
+
   return (
     <div className="min-w-0 animate-in delay-150 duration-700 fill-mode-both fade-in slide-in-from-bottom-6 motion-reduce:animate-none">
       <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-2xl ring-1 shadow-foreground/10 ring-foreground/5">
@@ -161,7 +120,7 @@ function TerminalPreview() {
           <span className="size-3 rounded-full bg-foreground/15" />
           <span className="size-3 rounded-full bg-foreground/15" />
           <span className="ml-2 font-mono text-xs text-muted-foreground">
-            mon-projet · zsh
+            {t.home.projectName} · zsh
           </span>
         </div>
         <pre className="overflow-x-auto p-5 font-mono text-[13px] leading-7">
@@ -175,15 +134,13 @@ function TerminalPreview() {
             </Line>
             <Line muted>➜ Local: http://localhost:5173/</Line>
             <Line>&nbsp;</Line>
-            <Line prompt>claude "ajoute une page portfolio"</Line>
-            <Line muted>Lecture de AGENTS.md et des skills…</Line>
+            <Line prompt>claude "{t.home.terminal.prompt}"</Line>
+            <Line muted>{t.home.terminal.reading}</Line>
             <Line>
-              <span className="text-brand">✓</span> src/routes/portfolio.tsx
-              créé
+              <span className="text-brand">✓</span> {t.home.terminal.created}
             </Line>
             <Line>
-              <span className="text-brand">✓</span> lien ajouté dans la
-              navigation
+              <span className="text-brand">✓</span> {t.home.terminal.linked}
             </Line>
           </code>
         </pre>
@@ -231,40 +188,45 @@ function Stack() {
 }
 
 function Features() {
+  const { t } = useI18n()
+  const f = t.home.features
+
   return (
     <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
-      <SectionHeading
-        eyebrow="Ce qui est déjà prêt"
-        title="Tout ce qui fait peur au début est déjà réglé."
-        text="Pas besoin de savoir configurer un projet. Tu commences directement par la partie que tu préfères : le design."
-      />
+      <SectionHeading eyebrow={f.eyebrow} title={f.title} text={f.text} />
 
       <div className="mt-14 grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
-        {features.map(({ icon: Icon, title, text }) => (
-          <div
-            key={title}
-            className="group bg-card p-7 transition-colors hover:bg-secondary/40"
-          >
-            <div className="grid size-10 place-items-center rounded-xl bg-brand/10 text-brand transition-transform duration-300 group-hover:-rotate-6">
-              <Icon className="size-5" />
+        {f.items.map(({ title, text }, i) => {
+          const Icon = featureIcons[i]
+          return (
+            <div
+              key={title}
+              className="group bg-card p-7 transition-colors hover:bg-secondary/40"
+            >
+              <div className="grid size-10 place-items-center rounded-xl bg-brand/10 text-brand transition-transform duration-300 group-hover:-rotate-6">
+                <Icon className="size-5" />
+              </div>
+              <h3 className="mt-5 text-lg font-semibold">{title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                {text}
+              </p>
             </div>
-            <h3 className="mt-5 text-lg font-semibold">{title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              {text}
-            </p>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </section>
   )
 }
 
 function Steps() {
+  const { t } = useI18n()
+  const s = t.home.steps
+
   return (
     <section className="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
-      <SectionHeading eyebrow="Démarrage" title="Comment ça marche" />
+      <SectionHeading eyebrow={s.eyebrow} title={s.title} />
       <ol className="mt-14 grid gap-6 md:grid-cols-3">
-        {steps.map((step, i) => (
+        {s.items.map((step, i) => (
           <li
             key={step.title}
             className="relative rounded-3xl border border-border p-7"
@@ -282,6 +244,8 @@ function Steps() {
 }
 
 function FinalCta() {
+  const { t } = useI18n()
+
   return (
     <section className="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
       <div className="relative overflow-hidden rounded-[2rem] bg-foreground px-8 py-16 text-center text-background sm:px-16">
@@ -290,11 +254,10 @@ function FinalCta() {
           className="pointer-events-none absolute -bottom-32 left-1/2 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-brand/40 blur-3xl"
         />
         <h2 className="relative text-3xl font-semibold tracking-tight sm:text-5xl">
-          Prêt à commencer ?
+          {t.home.cta.title}
         </h2>
         <p className="relative mx-auto mt-4 max-w-lg text-background/70">
-          C’est gratuit et open source. Pour ton portfolio, un prototype à
-          montrer ou le site d’un client.
+          {t.home.cta.text}
         </p>
         <div className="relative mt-8 flex flex-wrap justify-center gap-3">
           <a
@@ -306,7 +269,7 @@ function FinalCta() {
               'h-11 bg-brand px-5 text-brand-foreground hover:bg-brand/90',
             )}
           >
-            Utiliser ce template
+            {t.home.useTemplate}
             <ArrowRight data-icon="inline-end" />
           </a>
           <Link
@@ -316,7 +279,7 @@ function FinalCta() {
               'h-11 px-5 text-background hover:bg-background/10 hover:text-background',
             )}
           >
-            Voir les composants
+            {t.home.cta.components}
           </Link>
         </div>
       </div>
