@@ -37,6 +37,7 @@ Fabrik, c'est cette base. Je l'utilise pour mes propres projets et je la partage
 - **Une bibliothèque de composants** : boutons, champs, fenêtres, cartes… Tu les vois tous sur la page `/ui` du site, comme une librairie Figma.
 - **Un design system en variables** : couleurs, polices et arrondis sont réglés dans un seul fichier. Tu changes la couleur principale, tout le site suit.
 - **Le mode clair et le mode sombre**, sans rien faire.
+- **Français et anglais** : un bouton FR / EN dans le menu, et tous les textes rangés dans deux fichiers faciles à modifier.
 - **Un mode d'emploi pour ton assistant IA** : il sait comment ajouter une page ou un composant sans casser le reste.
 - **De ta maquette au site** : partage un lien Figma ou une capture, l'assistant l'intègre avec les composants du projet.
 - **Des garde-fous** : si quelque chose ne va pas dans le code, tu es prévenu avant que ce soit en ligne.
@@ -164,7 +165,7 @@ D'autres designers partagent leurs propres skills, et ils se marient très bien 
 
 Si tu préfères mettre les mains dans le code :
 
-- **Le nom et les textes** sont dans `src/config/site.ts`.
+- **Le nom et les liens** sont dans `src/config/site.ts`, et **les textes** dans `src/i18n/fr.ts` et `src/i18n/en.ts`.
 - **La couleur principale** est la variable `--brand` dans `src/index.css`. Il y en a une pour le mode clair et une pour le mode sombre.
 - **Les polices** se règlent avec `--font-heading` et `--font-sans`, dans le même fichier.
 - **Les pages** sont dans `src/routes/` : un fichier égale une page.
@@ -191,7 +192,8 @@ Les hooks Lefthook formatent et lintent à chaque commit, et la CI GitHub relanc
 
 ```
 src/
-  config/site.ts      nom, textes et liens du projet
+  config/site.ts      nom et liens du projet
+  i18n/               les textes en français et en anglais
   routes/             les pages (un fichier = une page)
   components/         les composants du site
   components/ui/      les composants shadcn/ui

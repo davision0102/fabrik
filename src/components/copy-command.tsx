@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Check, Copy } from 'lucide-react'
+import { useI18n } from '@/i18n/context'
 import { cn } from '@/lib/utils'
 
 /** Une commande sur une ligne, avec un bouton pour la copier. */
@@ -10,6 +11,7 @@ export function CopyCommand({
   command: string
   className?: string
 }) {
+  const { t } = useI18n()
   const [copied, setCopied] = useState(false)
 
   async function copy() {
@@ -36,7 +38,7 @@ export function CopyCommand({
       <button
         type="button"
         onClick={copy}
-        aria-label={copied ? 'Commande copiée' : 'Copier la commande'}
+        aria-label={copied ? t.copy.copied : t.copy.copy}
         className="grid size-8 shrink-0 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
       >
         {copied ? (

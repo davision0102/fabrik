@@ -26,7 +26,7 @@ AI assistants have made all of this much more approachable. But one thing was mi
 
 Fabrik is that starting point. I use it for my own projects, and I'm sharing it for anyone in the same situation I was in.
 
-> The demo site and the template's interface are in French. Everything is easy to translate: ask your AI assistant to "translate the site into English" and it will follow the project's rules.
+> The site comes in French and English, with an FR / EN switch in the menu. The AI skills are written in French, which assistants handle just fine.
 
 ## Who it's for
 
@@ -39,6 +39,7 @@ Fabrik is that starting point. I use it for my own projects, and I'm sharing it 
 - **A component library**: buttons, inputs, dialogs, cards… You can see them all on the `/ui` page of the site, like a Figma library.
 - **A design system in variables**: colors, fonts and corner radius live in a single file. Change the main color, and the whole site follows.
 - **Light and dark mode**, out of the box.
+- **French and English**: an FR / EN switch in the menu, with all the text in two easy-to-edit files.
 - **Instructions for your AI assistant**: it knows how to add a page or a component without breaking the rest.
 - **From mockup to website**: share a Figma link or a screenshot, and the assistant builds it with the project's components.
 - **Safety nets**: if something's wrong in the code, you find out before it goes live.
@@ -166,7 +167,7 @@ Other designers share their own skills, and they work really well with Fabrik. T
 
 If you'd rather get your hands in the code:
 
-- **The name and text** are in `src/config/site.ts`.
+- **The name and links** are in `src/config/site.ts`, and **the text** is in `src/i18n/fr.ts` and `src/i18n/en.ts`.
 - **The main color** is the `--brand` variable in `src/index.css`. There's one for light mode and one for dark mode.
 - **Fonts** are set with `--font-heading` and `--font-sans`, in the same file.
 - **Pages** are in `src/routes/`: one file is one page.
@@ -193,7 +194,8 @@ Lefthook hooks format and lint on every commit, and GitHub CI runs lint, format,
 
 ```
 src/
-  config/site.ts      project name, text and links
+  config/site.ts      project name and links
+  i18n/               text in French and English
   routes/             pages (one file = one page)
   components/         site components
   components/ui/      shadcn/ui components
