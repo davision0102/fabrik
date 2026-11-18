@@ -1,5 +1,7 @@
 <div align="center">
 
+**Français** · [English](README.en.md)
+
 <img src="public/favicon.svg" width="56" height="56" alt="" />
 
 # Fabrik
