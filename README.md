@@ -10,7 +10,7 @@ Un template React gratuit pour créer un vrai site, même si tu n'es pas dévelo
 
 [![CI](https://github.com/davision0102/fabrik/actions/workflows/ci.yml/badge.svg)](https://github.com/davision0102/fabrik/actions/workflows/ci.yml)
 [![Deploy](https://github.com/davision0102/fabrik/actions/workflows/deploy.yml/badge.svg)](https://davision0102.github.io/fabrik/)
-![Licence MIT](https://img.shields.io/badge/licence-MIT-ff5a1f)
+![Licence MIT](https://img.shields.io/badge/licence-MIT-2b795c)
 
 [Voir la démo](https://davision0102.github.io/fabrik/) · [Utiliser ce template](https://github.com/davision0102/fabrik/generate) · [Guide pas à pas](#premiers-pas-pas-à-pas)
 
@@ -207,6 +207,8 @@ src/
 Une idée, un bug, une fiche qui manque, une étape du guide pas claire ? Ouvre une issue ou une pull request, je regarde tout. Les retours de designers et de débutants m'intéressent particulièrement.
 
 La branche `main` est protégée : les modifications passent par une pull request, et les vérifications automatiques doivent être au vert avant la fusion.
+
+Les grandes étapes du projet, et le pourquoi de chaque choix, sont dans le [journal des changements](CHANGELOG.md).
 
 ## Licence
 
